@@ -44,7 +44,7 @@
     }
   },
   "variables": {
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'salinuxvm')]",
+    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'linuxvm', variables('RegionShort'))]",
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "nicName": "myVMNic",
@@ -66,7 +66,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[concat(variables('storageAccountName'), '-', variables('RegionShort'))]",
+      "name": "[variables('storageAccountName')]",
       "apiVersion": "[variables('apiVersion')]",
       "location": "[variables('RegionShort')]",
       "properties": {
