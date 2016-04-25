@@ -52,7 +52,7 @@
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
     "storageAccountType": "Standard_LRS",
-    "publicIPAddressName": "myPublicIP",
+    "publicIPAddressName": "publicip",
     "publicIPAddressType": "Dynamic",
     "vmStorageAccountContainerName": "vhds",
     "vmName": "mms2016",
@@ -85,7 +85,7 @@
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
         "dnsSettings": {
-          "domainNameLabel": "[concat(parameters('dnsLabelPrefix'), '-', deployment().name, '-', copyIndex())]"
+          "domainNameLabel": "[concat(parameters('dnsLabelPrefix'), '-', variables('RegionShort'), '-', copyIndex())]"
         }
       }
     },
