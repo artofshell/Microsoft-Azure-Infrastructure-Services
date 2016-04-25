@@ -46,4 +46,4 @@ New-AzureRmResourceGroupDeployment @Deployment;
 
 Write-Verbose -Message 'Finished creating ARM JSON template deployment ...';
 
-#Remove-AzureRmResourceGroup -Name MMS2016-Infrastructure -Force;
+# Remove-AzureRmResourceGroup -Name $ResourceGroup.Name -Force;
