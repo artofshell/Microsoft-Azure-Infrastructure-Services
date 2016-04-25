@@ -38,7 +38,7 @@
       {
           "type": "Microsoft.Resources/deployments",
           "apiVersion": "2015-01-01",
-          "name": "[concat('VirtualMachines-', variables('VMs')[copyIndex()].Region)]",
+          "name": "[concat('VirtualMachines-', replace(variables('VMs')[copyIndex()].Region, ' ', ''))]",
           "copy": {
               "count": 1,
               "name": "LinuxVMCopy"
