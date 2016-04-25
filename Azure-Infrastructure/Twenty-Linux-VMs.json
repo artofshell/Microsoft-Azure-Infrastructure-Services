@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "User name for the Virtual Machine."
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password for the Virtual Machine."
+      }
+    },
+    "dnsLabelPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+      }
+    }
+  },
+  "variables": { 
+      "VMs": [
+          {
+            "Region": "Japan West"   
+          }
+      ]
+  },
+  "resources": [ 
+      {
+          "type": "Microsoft.Resources/deployments",
+          "apiVersion": "2015-01-01",
+          "name": "[concat('VirtualMachines-', variables('VMs')[copyIndex()].Region)]",
+          "copy": {
+              "count": 1,
+              "name": "LinuxVMCopy"
+          },
+          "properties": {
+              "mode": "Incremental",
+              "parameters": {
+                  "adminUsername": {
+                      "value": "[parameters('adminUsername')]"
+                  },
+                  "adminPassword": {
+                      "value": "[parameters('adminPassword')]"
+                  },
+                  "dnsLabelPrefix": {
+                      "value": "[parameters('dnsLabelPrefix')]"
+                  },
+                  "Region": {
+                      "value": "variables('VMs')[copyIndex()].Region)"
+                  }
+              },
+              "templateLink": {
+                  "contentVersion": "1.0.0.0",
+                  "uri": "https://raw.githubusercontent.com/artofshell/mms2016/Azure-Infrastructure/Five-LinuxVMs.json"
+              }
+          }
+      }
+  ],
+  "outputs": { }
+}
