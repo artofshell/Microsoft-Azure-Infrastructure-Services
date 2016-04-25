@@ -61,7 +61,7 @@
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
     "apiVersion": "2015-06-15",
-    "RegionShort": "[replace(parameters('Region'), ' ', '')]"
+    "RegionShort": "[toLower(replace(parameters('Region'), ' ', ''))]"
   },
   "resources": [
     {
