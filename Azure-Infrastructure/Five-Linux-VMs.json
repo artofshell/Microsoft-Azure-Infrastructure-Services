@@ -143,7 +143,7 @@
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[variables('vmName')]",
+      "name": "[concat(variables('vmName'), '-', copyIndex())]",
       "location": "[parameters('Region')]",
       "copy": {
         "count": 5,
