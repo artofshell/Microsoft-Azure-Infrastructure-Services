@@ -119,7 +119,7 @@
           "name": "NICCopy"
       },
       "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'), '-', copyIndex())]",
+        "PublicIPCopy",
         "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
       ],
       "properties": {
@@ -146,7 +146,7 @@
       "location": "[parameters('Region')]",
       "dependsOn": [
         "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'), parameters('Region'))]",
-        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-', copyIndex())]"
+        "NICCopy"
       ],
       "properties": {
         "hardwareProfile": {

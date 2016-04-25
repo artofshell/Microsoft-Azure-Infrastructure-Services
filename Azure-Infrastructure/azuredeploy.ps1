@@ -12,9 +12,10 @@ function ConvertFrom-SecureStringToPlainText {
 $ErrorActionPreference = 'Stop';
 $VerbosePreference = 'continue';
 
-$AzureUsername = 'trevor@trevorsullivan.net';
-$AzureCredential = Get-Credential -UserName $AzureUsername -Message 'Please enter your Microsoft Azure password.';
-$null = Add-AzureRmAccount -Credential $AzureCredential;
+#$AzureUsername = 'trevor@trevorsullivan.net';
+#$AzureCredential = Get-Credential -UserName $AzureUsername -Message 'Please enter your Microsoft Azure password.';
+#$null = Add-AzureRmAccount -Credential $AzureCredential;
+Start-AzureRm;
 
 Write-Verbose -Message 'Creating Resource Group ...';
 
