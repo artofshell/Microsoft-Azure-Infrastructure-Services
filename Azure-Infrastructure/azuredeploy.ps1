@@ -20,7 +20,7 @@ Start-AzureRm;
 Write-Verbose -Message 'Creating Resource Group ...';
 
 $ResourceGroup = @{
-    Name = 'MMS2016-Infrastructure';
+    Name = 'MMS2016-Infrastructure2';
     Location = 'North Central US';
     Force = $true;
     Tag = @{ Name = 'Conference'; Value = 'MMS 2016' };
@@ -45,3 +45,5 @@ $Deployment = @{
 New-AzureRmResourceGroupDeployment @Deployment;
 
 Write-Verbose -Message 'Finished creating ARM JSON template deployment ...';
+
+#Remove-AzureRmResourceGroup -Name MMS2016-Infrastructure -Force;

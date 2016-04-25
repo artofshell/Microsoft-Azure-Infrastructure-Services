@@ -44,7 +44,7 @@
     }
   },
   "variables": {
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'linuxvm', variables('RegionShort'))]",
+    "storageAccountName": "[concat(uniquestring(resourceGroup().id), variables('RegionShort'))]",
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "nicName": "myVMNic",
