@@ -60,14 +60,15 @@
     "virtualNetworkName": "MyVNET",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
-    "apiVersion": "2015-06-15"
+    "apiVersion": "2015-06-15",
+    "RegionShort": "[replace(parameters('Region'), ' ', '')]"
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
       "apiVersion": "[variables('apiVersion')]",
-      "location": "[parameters('Region')]",
+      "location": "[variables('RegionShort')]",
       "properties": {
         "accountType": "[variables('storageAccountType')]"
       }
@@ -145,7 +146,7 @@
       "name": "[variables('vmName')]",
       "location": "[parameters('Region')]",
       "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'), parameters('Region'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'), variables('RegionShort'))]",
         "NICCopy"
       ],
       "properties": {
