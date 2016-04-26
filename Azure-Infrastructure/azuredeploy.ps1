@@ -15,6 +15,9 @@ $VerbosePreference = 'continue';
 #$AzureUsername = 'trevor@trevorsullivan.net';
 #$AzureCredential = Get-Credential -UserName $AzureUsername -Message 'Please enter your Microsoft Azure password.';
 #$null = Add-AzureRmAccount -Credential $AzureCredential;
+
+### The Start-AzureRm command is part of the Azure PowerShell Extensions project.
+### On PowerShell version 5.0+, use Install-Module -Name AzureExt -Scope CurrentUser to install it
 Start-AzureRm;
 
 Write-Verbose -Message 'Creating Resource Group ...';
